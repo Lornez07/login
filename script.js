@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (username === adminAccount.username && password === adminAccount.password) {
         localStorage.setItem('loggedUser', username);
-        window.location.href = 'welcome.html';
+        window.location.href = 'https://lornez07.github.io/main/index.html';
       } else {
         const user = JSON.parse(localStorage.getItem(username));
         if (user && user.password === password) {
