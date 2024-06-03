@@ -37,13 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (username === adminAccount.username && password === adminAccount.password) {
         localStorage.setItem('loggedUser', username);
-        alert(`Welcome, ${username}!`);
+        alert(`Welcome back, ${username}!`);
         window.location.href = 'https://lornez07.github.io/main/index.html';
       } else {
         const user = JSON.parse(localStorage.getItem(username));
         if (user && user.password === password) {
           localStorage.setItem('loggedUser', username);
-          alert(`Welcome, ${username}!`);
+          alert(`Welcome back, ${username}!`);
           window.location.href = 'https://lornez07.github.io/main/index.html';
         } else {
           alert('Invalid username or password');
