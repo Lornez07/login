@@ -99,13 +99,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (username === adminAccount.username && password === adminAccount.password) {
         sessionStorage.setItem('loggedUser', username);
         disableBackButton();
-        window.location.href = 'welcome.html';
+        alert('Logged in Successfully!');
+        window.location.href = 'https://lornez07.github.io/main/';
       } else {
         const user = JSON.parse(localStorage.getItem(username));
         if (user && user.password === password) {
           sessionStorage.setItem('loggedUser', username);
           disableBackButton();
-          window.location.href = 'welcome.html';
+          alert('Logged in Successfully!');
+          window.location.href = 'https://lornez07.github.io/main/';
         } else {
           alert('Invalid username or password');
         }
@@ -143,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Display username on welcome page
   const loggedUser = sessionStorage.getItem('loggedUser');
   if (loggedUser) {
     const usernameSpan = document.getElementById('username');
