@@ -57,21 +57,26 @@ body {
 .input-box i {
   position: absolute;
   right: 20px;
-  top: 30%;
-  transform: translate(-50%);
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 20px;
 }
 
-.checkbox-links {
+.input-box .password-icon,
+.input-box .confirm-password-icon {
+  right: 50px;
+}
+
+.wrapper .checkbox-links {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   font-size: 14.5px;
   margin: -15px 0 15px;
 }
 
-.show-password input {
-  margin-right: 5px;
+.checkbox-links label input {
+  accent-color: #fff;
+  margin-right: 3px;
 }
 
 .checkbox-links a {
@@ -111,4 +116,12 @@ body {
 
 .register-link p a:hover {
   text-decoration: underline;
+}
+
+.bx-hide::before {
+  content: '\f606';
+}
+
+.bx-show::before {
+  content: '\f600';
 }
