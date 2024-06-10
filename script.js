@@ -10,15 +10,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const forgotPasswordLink = document.getElementById('forgotPassword');
   const logoutButton = document.getElementById('logoutButton');
 
-  // Function to disable the back button
   function disableBackButton() {
     window.history.pushState(null, '', window.location.href);
     window.onpopstate = function () {
       window.history.pushState(null, '', window.location.href);
     };
   }
-  
+
   const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+  function isUniqueUsernameEmail(username, email) {
+    for (let key in localStorage) {
+      if (localStorage.hasOwnProperty(key)) {
+        const user = JSON.parse(localStorage.getItem(key));
+        if (user && (user.username === username || user.email === email)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 
   if (registerForm) {
     registerForm.addEventListener('submit', (event) => {
@@ -38,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      if (localStorage.getItem(username) !== null) {
-        alert('Username already exists!');
+      if (!isUniqueUsernameEmail(username, email)) {
+        alert('Username or email already exists!');
         return;
       }
 
@@ -47,6 +58,35 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem(username, JSON.stringify(newUser));
       alert('Registration successful!');
       window.location.href = 'index.html';
+    });
+
+    const passwordInput = document.getElementById('registerPassword');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const passwordIcon = document.querySelector('.password-icon');
+    const confirmPasswordIcon = document.querySelector('.confirm-password-icon');
+
+    passwordIcon.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordIcon.classList.add('bx-show');
+        passwordIcon.classList.remove('bx-hide');
+      } else {
+        passwordInput.type = 'password';
+        passwordIcon.classList.add('bx-hide');
+        passwordIcon.classList.remove('bx-show');
+      }
+    });
+
+    confirmPasswordIcon.addEventListener('click', () => {
+      if (confirmPasswordInput.type === 'password') {
+        confirmPasswordInput.type = 'text';
+        confirmPasswordIcon.classList.add('bx-show');
+        confirmPasswordIcon.classList.remove('bx-hide');
+      } else {
+        confirmPasswordInput.type = 'password';
+        confirmPasswordIcon.classList.add('bx-hide');
+        confirmPasswordIcon.classList.remove('bx-show');
+      }
     });
   }
 
@@ -57,15 +97,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const password = document.getElementById('loginPassword').value;
 
       if (username === adminAccount.username && password === adminAccount.password) {
-        localStorage.setItem('loggedUser', username);
+        sessionStorage.setItem('loggedUser', username);
         disableBackButton();
-        window.location.href = 'https://lornez07.github.io/main/';
+        window.location.href = 'welcome.html';
       } else {
         const user = JSON.parse(localStorage.getItem(username));
         if (user && user.password === password) {
-          localStorage.setItem('loggedUser', username);
+          sessionStorage.setItem('loggedUser', username);
           disableBackButton();
-          window.location.href = 'https://lornez07.github.io/main/';
+          window.location.href = 'welcome.html';
         } else {
           alert('Invalid username or password');
         }
@@ -93,12 +133,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (logoutButton) {
     logoutButton.addEventListener('click', () => {
-      localStorage.removeItem('loggedUser');
+      sessionStorage.removeItem('loggedUser');
       window.location.href = 'index.html';
+      window.history.pushState(null, '', 'index.html');
+      window.history.pushState(null, '', 'index.html');
+      window.onpopstate = function () {
+        window.location.href = 'index.html';
+      };
     });
   }
 
-  const loggedUser = localStorage.getItem('loggedUser');
+  // Display username on welcome page
+  const loggedUser = sessionStorage.getItem('loggedUser');
   if (loggedUser) {
     const usernameSpan = document.getElementById('username');
     if (usernameSpan) {
