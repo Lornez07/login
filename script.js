@@ -65,29 +65,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordIcon = document.querySelector('.password-icon');
     const confirmPasswordIcon = document.querySelector('.confirm-password-icon');
 
-    passwordIcon.addEventListener('click', () => {
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        passwordIcon.classList.add('bx-show');
-        passwordIcon.classList.remove('bx-hide');
-      } else {
-        passwordInput.type = 'password';
-        passwordIcon.classList.add('bx-hide');
-        passwordIcon.classList.remove('bx-show');
-      }
-    });
+    if (passwordIcon) {
+      passwordIcon.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          passwordIcon.classList.add('bx-show');
+          passwordIcon.classList.remove('bx-hide');
+        } else {
+          passwordInput.type = 'password';
+          passwordIcon.classList.add('bx-hide');
+          passwordIcon.classList.remove('bx-show');
+        }
+      });
+    }
 
-    confirmPasswordIcon.addEventListener('click', () => {
-      if (confirmPasswordInput.type === 'password') {
-        confirmPasswordInput.type = 'text';
-        confirmPasswordIcon.classList.add('bx-show');
-        confirmPasswordIcon.classList.remove('bx-hide');
-      } else {
-        confirmPasswordInput.type = 'password';
-        confirmPasswordIcon.classList.add('bx-hide');
-        confirmPasswordIcon.classList.remove('bx-show');
-      }
-    });
+    if (confirmPasswordIcon) {
+      confirmPasswordIcon.addEventListener('click', () => {
+        if (confirmPasswordInput.type === 'password') {
+          confirmPasswordInput.type = 'text';
+          confirmPasswordIcon.classList.add('bx-show');
+          confirmPasswordIcon.classList.remove('bx-hide');
+        } else {
+          confirmPasswordInput.type = 'password';
+          confirmPasswordIcon.classList.add('bx-hide');
+          confirmPasswordIcon.classList.remove('bx-show');
+        }
+      });
+    }
   }
 
   if (loginForm) {
@@ -100,14 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('loggedUser', username);
         disableBackButton();
         alert('Logged in Successfully!');
-        window.location.href = 'https://lornez07.github.io/main/';
+        window.location.href = 'welcome.html';
       } else {
         const user = JSON.parse(localStorage.getItem(username));
         if (user && user.password === password) {
           sessionStorage.setItem('loggedUser', username);
           disableBackButton();
           alert('Logged in Successfully!');
-          window.location.href = 'https://lornez07.github.io/main/';
+          window.location.href = 'welcome.html';
         } else {
           alert('Invalid username or password');
         }
