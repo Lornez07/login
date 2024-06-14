@@ -65,33 +65,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordIcon = document.querySelector('.password-icon');
     const confirmPasswordIcon = document.querySelector('.confirm-password-icon');
 
-    if (passwordIcon) {
-      passwordIcon.addEventListener('click', () => {
-        if (passwordInput.type === 'password') {
-          passwordInput.type = 'text';
-          passwordIcon.classList.add('bx-show');
-          passwordIcon.classList.remove('bx-hide');
-        } else {
-          passwordInput.type = 'password';
-          passwordIcon.classList.add('bx-hide');
-          passwordIcon.classList.remove('bx-show');
-        }
-      });
-    }
+    passwordIcon.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordIcon.classList.add('bx-show');
+        passwordIcon.classList.remove('bx-hide');
+      } else {
+        passwordInput.type = 'password';
+        passwordIcon.classList.add('bx-hide');
+        passwordIcon.classList.remove('bx-show');
+      }
+    });
 
-    if (confirmPasswordIcon) {
-      confirmPasswordIcon.addEventListener('click', () => {
-        if (confirmPasswordInput.type === 'password') {
-          confirmPasswordInput.type = 'text';
-          confirmPasswordIcon.classList.add('bx-show');
-          confirmPasswordIcon.classList.remove('bx-hide');
-        } else {
-          confirmPasswordInput.type = 'password';
-          confirmPasswordIcon.classList.add('bx-hide');
-          confirmPasswordIcon.classList.remove('bx-show');
-        }
-      });
-    }
+    confirmPasswordIcon.addEventListener('click', () => {
+      if (confirmPasswordInput.type === 'password') {
+        confirmPasswordInput.type = 'text';
+        confirmPasswordIcon.classList.add('bx-show');
+        confirmPasswordIcon.classList.remove('bx-hide');
+      } else {
+        confirmPasswordInput.type = 'password';
+        confirmPasswordIcon.classList.add('bx-hide');
+        confirmPasswordIcon.classList.remove('bx-show');
+      }
+    });
   }
 
   if (loginForm) {
