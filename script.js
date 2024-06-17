@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const forgotPasswordLink = document.getElementById('forgotPassword');
   const logoutButton = document.getElementById('logoutButton');
 
+  // Function to disable the back button
   function disableBackButton() {
     window.history.pushState(null, '', window.location.href);
     window.onpopstate = function () {
@@ -17,8 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
+  // Email validation regex
   const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
+  // Check if email or username already exists
   function isUniqueUsernameEmail(username, email) {
     for (let key in localStorage) {
       if (localStorage.hasOwnProperty(key)) {
@@ -31,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   }
 
+  // Registration form submission
   if (registerForm) {
     registerForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -60,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'index.html';
     });
 
+    // Password visibility toggle
     const passwordInput = document.getElementById('registerPassword');
     const confirmPasswordInput = document.getElementById('confirmPassword');
     const passwordIcon = document.querySelector('.password-icon');
@@ -90,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Login form submission
   if (loginForm) {
     loginForm.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -99,14 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (username === adminAccount.username && password === adminAccount.password) {
         sessionStorage.setItem('loggedUser', username);
         disableBackButton();
-        alert('Logged in Successfully!');
         window.location.href = 'welcome.html';
       } else {
         const user = JSON.parse(localStorage.getItem(username));
         if (user && user.password === password) {
           sessionStorage.setItem('loggedUser', username);
           disableBackButton();
-          alert('Logged in Successfully!');
           window.location.href = 'welcome.html';
         } else {
           alert('Invalid username or password');
@@ -133,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Logout button functionality
   if (logoutButton) {
     logoutButton.addEventListener('click', () => {
       sessionStorage.removeItem('loggedUser');
@@ -145,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Display username on welcome page
   const loggedUser = sessionStorage.getItem('loggedUser');
   if (loggedUser) {
     const usernameSpan = document.getElementById('username');
