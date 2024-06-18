@@ -104,14 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('loggedUser', username);
         disableBackButton();
         alert('Logged in Successfully!');
-        window.location.href = 'welcome.html';
+        window.location.href = 'https://lornez07.github.io/main/';
       } else {
         const user = JSON.parse(localStorage.getItem(username));
         if (user && user.password === password) {
           sessionStorage.setItem('loggedUser', username);
           disableBackButton();
           alert('Logged in Successfully!');
-          window.location.href = 'welcome.html';
+          window.location.href = 'https://lornez07.github.io/main/';
         } else {
           alert('Invalid username or password');
         }
