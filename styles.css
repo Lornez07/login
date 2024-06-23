@@ -10,31 +10,35 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url(bora.jpg) no-repeat;
+  background: url(meme.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .wrapper {
   width: 500px;
-/*   background: transparent; */
   border: 0px solid rgba(255, 255, 255, .2);
-/*   backdrop-filter: blur(9px); */
   color: #fff;
   border-radius: 12px;
   padding: 30px 40px;
+  background: url('');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(1px);
 }
 
 .wrapper h1 {
-  font-size: 36px;
+  font-size: 50px;
   text-align: center;
+  text-shadow: 2px 2px 4px#000000;
 }
 
 .wrapper .input-box {
   position: relative;
   width: 100%;
-  height: 50px;
+  height: 70px;
   margin: 30px 0;
+  text-shadow: 2px 2px 4px#000000;
 }
 
 .input-box input {
@@ -43,11 +47,12 @@ body {
   background: transparent;
   border: none;
   outline: none;
-  border: 2px solid rgba(255, 255, 255, .2);
-  border-radius: 20px;
-  font-size: 16px;
+  border: 7px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 25px;
   color: #fff;
   padding: 20px 45px 20px 20px;
+  text-shadow: 2px 2px 4px#000000;
 }
 
 .input-box input::placeholder {
@@ -59,7 +64,7 @@ body {
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .input-box .password-icon,
@@ -70,13 +75,15 @@ body {
 .wrapper .checkbox-links {
   display: flex;
   justify-content: space-between;
-  font-size: 14.5px;
+  font-size: 20px;
   margin: -15px 0 15px;
+  text-shadow: 2px 2px 4px#000000;
 }
 
 .checkbox-links label input {
   accent-color: #fff;
   margin-right: 3px;
+  text-shadow: 2px 2px 4px#000000;
 }
 
 .checkbox-links a {
@@ -90,22 +97,23 @@ body {
 
 .wrapper .btn {
   width: 100%;
-  height: 45px;
+  height: 50px;
   background: #fff;
   border: none;
   outline: none;
   border-radius: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 30px;
   color: #333;
   font-weight: 600;
 }
 
 .wrapper .register-link {
-  font-size: 14.5px;
+  font-size: 20px;
   text-align: center;
   margin: 20px 0 15px;
+  text-shadow: 2px 2px 4px#000000;
 }
 
 .register-link p a {
